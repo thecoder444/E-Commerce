@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Slidebar from './Slidebar'
 import { useNavigate,} from 'react-router-dom'
 import toast from 'react-hot-toast'
+import { API_URL } from "../config";
 
 function AddProducts() {
 
@@ -18,7 +19,7 @@ function AddProducts() {
         // console.log(formdata)
         
         try {
-            const response = await fetch("/api/addadminproduct",{
+            const response = await fetch(`${API_URL}/api/addadminproduct`,{
                 method: "POST",
                 body : formdata
             });
