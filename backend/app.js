@@ -12,10 +12,6 @@ mongoose.connect(process.env.ATLASDB_URL)
 }).catch((err)=>{
     console.log(err)
 })
-app.use(express.static("public"))
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json())
-app.use("/api", apiRouter)
 
 app.use(cors({
     origin: [
@@ -27,6 +23,11 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
+app.use(express.static("public"))
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json())
+
+app.use("/api", apiRouter)
 
 let port = process.env.PORT || 5000
 app.listen(port, ()=> {
