@@ -2,7 +2,6 @@ import { useNavigate, useParams } from 'react-router-dom'
 import Slidebar from './Slidebar'
 import { useEffect, useState } from 'react';
 import toast from "react-hot-toast"
-import { API_URL } from "../config";
 
 function QueryReply() {
     const {id} = useParams();
@@ -11,7 +10,7 @@ function QueryReply() {
 
     async function queryData() {
         try {
-            const response = await fetch(`${API_URL}/api/querysingledata/${id}`)
+            const response = await fetch(`https://e-commerce-err0.onrender.com/api/querysingledata/${id}`)
             const result = await response.json();
 
             if(response.ok){
@@ -37,7 +36,7 @@ function QueryReply() {
     async function handleForm(e){
         e.preventDefault();
         try {
-            const response = await fetch(`${API_URL}/api/mailreply/${id}`,{
+            const response = await fetch(`https://e-commerce-err0.onrender.com/api/mailreply/${id}`,{
                 method:"POST",
                 headers:{"Content-Type":"application/json"},
                 body: JSON.stringify(query)

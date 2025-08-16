@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react'
 import Slidebar from './Slidebar'
 import toast from 'react-hot-toast'
 import { Link } from 'react-router-dom'
-import { API_URL } from "../config";
 
 function AdminQuery() {
 const[query, setQuery] = useState([])
 
     async function AllQuery() {
         try {
-            const response = await fetch(`${API_URL}/api/userallquery`)
+            const response = await fetch("https://e-commerce-err0.onrender.com/api/userallquery")
             const record = await response.json();
             if(response.ok){
             console.log(record)
@@ -27,7 +26,7 @@ const[query, setQuery] = useState([])
 
     async function handleDelete(id){
         try {
-            const response = await fetch(`${API_URL}/api/deletequery/${id}`,{
+            const response = await fetch(`https://e-commerce-err0.onrender.com/api/deletequery/${id}`,{
                 method:"DELETE",
             })
             const result = await response.json();

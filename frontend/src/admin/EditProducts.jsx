@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import Slidebar from './Slidebar'
 import { useNavigate , useParams } from 'react-router-dom'
 import toast from 'react-hot-toast'
-import { API_URL } from "../config";
 
 function EditProducts() {
     const Navigate = useNavigate()
@@ -12,7 +11,7 @@ function EditProducts() {
     // console.log(id)
     async function editValueData(){
         try {
-            const response = await fetch(`${API_URL}/api/editvaluedata/${id}`)
+            const response = await fetch(`https://e-commerce-err0.onrender.com/api/editvaluedata/${id}`)
             const result = await response.json();
             console.log(result)
             setEdit(result.data)
@@ -36,7 +35,7 @@ function EditProducts() {
             Pstatus : edit.productStatus
         }
        try {
-        const response = await fetch(`${API_URL}/api/productupdate/${id}`,{
+        const response = await fetch(`https://e-commerce-err0.onrender.com/api/productupdate/${id}`,{
             method:"PUT",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(formData)

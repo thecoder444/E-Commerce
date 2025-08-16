@@ -4,13 +4,12 @@ import { FaPlus, FaEdit } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import toast from 'react-hot-toast'
-import { API_URL } from "../config";
 
 function AdminProducts() {
     const [products, setProducts] = useState([])
     async function getAllProducts() {
        try {
-        const response = await fetch(`${API_URL}/api/useralldata`)
+        const response = await fetch("https://e-commerce-err0.onrender.com/api/useralldata")
         const result = await response.json();
         setProducts(result.data);
        } catch (error) {
@@ -22,7 +21,7 @@ function AdminProducts() {
     },[])
     async function handleDelete(id){
        try {
-        const response = await fetch(`${API_URL}/api/productdelete/${id}`, {
+        const response = await fetch(`https://e-commerce-err0.onrender.com/api/productdelete/${id}`, {
             method:"DELETE",
         });
         const result = await response.json();
